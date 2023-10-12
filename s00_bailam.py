@@ -27,11 +27,22 @@ get_name_in_email(['user1@gmail.com', 'user2@gmail.com']) | ['user1', 'user2']
 get_name_in_email([])                                     | []
 get_name_in_email(['abb#ccc'])                            | ['ERROR invaid email']
 get_name_in_email([None])                                 | ['ERROR invaid email']
-get_name_in_email([None, 'abb#ccc'])                      | ['ERROR invaid email', 'ERROR invaid email']
+get_name_in_email([None, 'abb#ccc'])                      | ['', 'r=']
 """
 #endregion debai
 
 #region bailam
 def get_name_in_email(email_list):
-  return 'todo'
+    def hople(email):
+        if email is None:return False
+        if "@" in email: return True
+    r=[]
+    for i in email_list:
+      if not hople(i):
+         r.append("ERROR invaid email")
+         continue
+
+      r.append(i.split("@")[0])
+    return r
+  
 #endregion bailam
